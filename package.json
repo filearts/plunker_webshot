@@ -1,0 +1,23 @@
+{
+  "name": "plunker-webshot",
+  "version": "1.0.0",
+  "description": "Screenshotting service for Plunker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Geoff Goodman",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.2.2",
+    "bluebird-lru-cache": "^0.1.0",
+    "concat-stream": "^1.4.6",
+    "good": "^2.2.1",
+    "hapi": "^6.4.0",
+    "hoek": "^2.4.1",
+    "imagemagick-stream": "^1.1.0",
+    "joi": "^4.6.2",
+    "phantomjs": "^1.9.7-15",
+    "webshot": "^0.15.2"
+  }
+}
