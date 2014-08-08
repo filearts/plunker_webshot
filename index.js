@@ -1,6 +1,5 @@
 var Boom = require("boom");
 var Concat = require("concat-stream");
-var Good = require("good");
 var Hapi = require("hapi");
 var Image = require("imagemagick-stream");
 var Joi = require("joi");
@@ -48,8 +47,6 @@ internals.prepareShot = function (key) {
         var concatStream = Concat(function (buf) {
           if (!buf.length) return reject(Boom.serverTimeout("Invalid preview, empty buffer"));
           
-          console.log ("Rendered", plunkId);
-          
           resolve(buf);
         });
         
@@ -88,7 +85,14 @@ server.route({
   },
 });
 
-server.pack.register(Good, function (err) {
+server.pack.register({
+  plugin: require("good"),
+  options: {
+    subscribers: {
+      'console': ['ops', 'request', 'log', 'error'],
+    },
+  },
+}, function (err) {
   if (err) {
     throw err; // something bad happened loading the plugin
   }
