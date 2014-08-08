@@ -7,7 +7,6 @@ var LRU = require("bluebird-lru-cache");
 var Promise = require("bluebird");
 var Webshot = require("webshot");
 
-process.env.RUN_URL = "http://run.plnkr.co";
 
 if (!process.env.RUN_URL) throw new Error("RUN_URL environment variable is required.");
 if (!process.env.PORT) throw new Error("PORT environment variable is required.");
