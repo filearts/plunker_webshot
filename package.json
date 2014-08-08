@@ -12,6 +12,7 @@
   "dependencies": {
     "bluebird": "^2.2.2",
     "bluebird-lru-cache": "^0.1.0",
+    "boom": "^2.5.1",
     "concat-stream": "^1.4.6",
     "good": "^2.2.1",
     "hapi": "^6.4.0",
