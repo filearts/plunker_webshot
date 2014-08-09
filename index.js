@@ -46,7 +46,7 @@ internals.prepareShot = function (key) {
   return internals.capture(internals.runUrl + "/plunks/" + plunkId + "/", params)
     .then(function (renderStream) {
       return new Promise(function (resolve, reject) {
-        var resizeStream = Image().resize("248").crop("248x496+0+0").quality(75);
+        var resizeStream = Image().resize("248").gravity("NorthWest").crop("248x372").quality(75);
         var concatStream = Concat(function (buf) {
           if (!buf.length) return reject(Boom.serverTimeout("Invalid preview, empty buffer"));
           
