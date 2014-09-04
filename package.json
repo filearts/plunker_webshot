@@ -15,7 +15,7 @@
     "boom": "^2.5.1",
     "concat-stream": "^1.4.6",
     "good": "^2.2.1",
-    "hapi": "^6.4.0",
+    "hapi": "^6.6.0",
     "hoek": "^2.4.1",
     "imagemagick-stream": "^1.1.0",
     "joi": "^4.6.2",

@@ -56,7 +56,8 @@ internals.prepareShot = function (key) {
         
         renderStream
           .pipe(resizeStream)
-          .pipe(concatStream);
+          .pipe(concatStream)
+          .on("error", reject);
       });
     });
 };
