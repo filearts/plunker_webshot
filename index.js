@@ -33,6 +33,7 @@ internals.prepareShot = function (key) {
   var params = {
     errorIfStatusIsNot200: true,
     renderDelay: 3,
+    timeout: 1000 * 10,
     screenSize: {
       width: 1024,
       height: 768,
