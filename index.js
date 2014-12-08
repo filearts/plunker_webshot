@@ -11,7 +11,7 @@ var Webshot = require("webshot");
 if (!process.env.RUN_URL) throw new Error("RUN_URL environment variable is required.");
 if (!process.env.PORT) throw new Error("PORT environment variable is required.");
 
-var server = new Hapi.Server(process.env.PORT);
+var server = new Hapi.Server(process.env.HOST || "0.0.0.0", process.env.PORT);
 
 
 var internals = {};
@@ -92,11 +92,12 @@ server.route({
 
 server.pack.register({
   plugin: require("good"),
-  options: {
-    subscribers: {
-      'console': ['ops', 'request', 'log', 'error'],
-    },
-  },
+  // options: {
+  //   subscribers: {
+  //     'console': [],
+  //     '/tmp/webshot/': ['request', 'log', 'error'],
+  //   },
+  // },
 }, function (err) {
   if (err) {
     throw err; // something bad happened loading the plugin
