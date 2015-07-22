@@ -20,6 +20,6 @@
     "imagemagick-stream": "^1.1.0",
     "joi": "^4.6.2",
     "phantomjs": "^1.9.7-15",
-    "webshot": "^0.15.2"
+    "screenshot-stream": "^1.2.2"
   }
 }
