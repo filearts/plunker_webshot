@@ -29,7 +29,7 @@ internals.prepareShot = function (key) {
   
   return new Promise(function (resolve, reject) {
     var captureStream = Screenshot(internals.runUrl + "/plunks/" + plunkId + "/", "1024x768", {delay: 2});
-    var resizeStream = Image().resize("248").gravity("NorthWest").crop("248x372").quality(75);
+    var resizeStream = Image().resize("480").gravity("NorthWest").crop("480x640").quality(75);
     var concatStream = Concat(function (buf) {
       if (!buf.length) {
         return reject(Boom.serverTimeout("Invalid preview, empty buffer"));
@@ -56,6 +56,10 @@ server.route({
   method: "GET",
   path: "/{plunkId}.png",
   config: {
+    cache: {
+      expiresIn: 1000 * 60 * 60 * 24,
+      privacy: 'public'
+    },
     validate: {
       params: {
         plunkId: Joi.string().alphanum().required(),
@@ -65,9 +69,12 @@ server.route({
       },
     },
     handler: function (request, reply) {
-      internals.cache.get(request.params.plunkId + "@" + request.query.d)
+      var imgId = request.params.plunkId + "@" + request.query.d;
+      internals.cache.get(imgId)
         .then(function (buf) {
-          reply(buf).type("image/png");
+          reply(buf)
+            .etag(imgId)
+            .type("image/png");
         }, reply);
     },
   },
